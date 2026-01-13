@@ -1,3 +1,4 @@
+我在用claude code搭建我的專案
 ## 0. Current Status (當前狀態 - 動態更新)
 - **Current Phase:** Phase 1 - 統一市場數據模型設計
 - **Status:** 尚未開始 (Pending Initialization)
@@ -5,8 +6,8 @@
 
 Global Context (全局背景):
 ### 1.1 硬體環境
-- **採集與清洗 (Edge):** Intel i9-13900K (192.168.2.3) - 專注單核高頻性能
-- **存儲與計算 (Core):** Dual Xeon E5-2696v4 (192.168.2.4) - 專注多核並行與吞吐
+- **採集與清洗 (Edge):** Intel i9-13900K 32g 7200cl34 (192.168.2.3) - 專注單核高頻性能
+- **存儲與計算 (Core):** Dual Xeon E5-2696v4 112g 2400 (192.168.2.4) - 專注多核並行與吞吐
 - **部署架構:** 本地單機部署 (Localhost)，不涉及雲端/Kubernetes 分佈式。
 
 ### 1.2 核心哲學 (Philosophy)
@@ -202,3 +203,84 @@ Phase 8 —— API / Dashboard
 - 不允許繞過數據語義層
 交付結果：
 - 一個完全被動的可視化系統
+
+C. Current Status（目前進度）
+✅ Phase1：完成（commit/tag/2026-01-13）
+✅ Phase2：完成（commit/tag/2026-01-13）
+Phase 1/2 驗收強化 - 完成報告
+⏳ Phase3：未開始
+⏳ Phase4：未開始
+⏳ Phase5：未開始
+⏳ Phase6：未開始
+⏳ Phase7：未開始
+⏳ Phase8：未開始
+Verification（驗收命令）
+全量驗收：
+source .venv/bin/activate && python -m pytest -vv -s
+Phase1-only：
+python -m pytest -q tests/test_proto_roundtrip.py tests/test_phase1_contracts.py
+Phase2-only：
+python -m pytest -q tests/test_cleaning_pipeline.py tests/test_phase2_contracts.py
+環境：
+protobuf==6.33.4
+pytest==9.0.2
+F. Repo Layout（專案結構）
+(.venv) root@eric99543:~/script/orderbookmonitor# tree -L 3
+.
+├── cleaning
+│   ├── config.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── flags.py
+│   │   ├── __init__.py
+│   │   ├── issue.py
+│   │   ├── __pycache__
+│   │   └── result.py
+│   ├── pipeline.py
+│   ├── __pycache__
+│   │   ├── config.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── pipeline.cpython-312.pyc
+│   └── stages
+│       ├── anomaly.py
+│       ├── base.py
+│       ├── field.py
+│       ├── __init__.py
+│       ├── precision.py
+│       ├── __pycache__
+│       ├── structure.py
+│       ├── symbol.py
+│       └── timestamp.py
+├── gen
+│   └── python
+│       ├── common_pb2.py
+│       ├── envelope_pb2.py
+│       ├── funding_pb2.py
+│       ├── liquidation_pb2.py
+│       ├── orderbook_pb2.py
+│       ├── __pycache__
+│       └── trade_pb2.py
+├── proto
+│   ├── common.proto
+│   ├── envelope.proto
+│   ├── funding.proto
+│   ├── liquidation.proto
+│   ├── orderbook.proto
+│   └── trade.proto
+├── tests
+│   ├── fixtures
+│   │   ├── v1_envelope.bin
+│   │   └── v1_trade_event.bin
+│   ├── generate_fixtures.py
+│   ├── __pycache__
+│   │   ├── test_cleaning_pipeline.cpython-312-pytest-9.0.2.pyc
+│   │   ├── test_phase1_contracts.cpython-312-pytest-9.0.2.pyc
+│   │   ├── test_phase2_contracts.cpython-312-pytest-9.0.2.pyc
+│   │   └── test_proto_roundtrip.cpython-312-pytest-9.0.2.pyc
+│   ├── test_cleaning_pipeline.py
+│   ├── test_phase1_contracts.py
+│   ├── test_phase2_contracts.py
+│   └── test_proto_roundtrip.py
+└── verify_output.txt
+
+14 directories, 42 files
