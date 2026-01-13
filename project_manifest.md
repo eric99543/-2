@@ -1,6 +1,6 @@
 我在用claude code搭建我的專案
 ## 0. Current Status (當前狀態 - 動態更新)
-- **Current Phase:** Phase 1 - 統一市場數據模型設計
+- **Current Phase:** Phase 3 - 消息傳輸層（Producer）
 - **Status:** 尚未開始 (Pending Initialization)
 - **Goal for this Session:** 確立 Rust `struct` 定義，確認序列化方案 (Protobuf/bincode)。
 
